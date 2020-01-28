@@ -66,4 +66,10 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
     assert_empty cookies[:remember_token]
   end
+
+  test "successful login with friendly forwarding" do
+    get user_path(@user)
+    log_in_as(@user)
+    assert_redirected_to @user
+  end
 end
